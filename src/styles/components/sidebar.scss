@@ -1,0 +1,81 @@
+@import "../properties.scss";
+
+#sidebar {
+  width: 80px;
+  height: calc(100vh - 50px);
+
+  background: #2D3640;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 50px 10px;
+
+  button {
+    width: 100%;
+    height: 50px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 1px;
+
+    background: none;
+
+    margin: 20px 0;
+
+    &.eraser{
+      margin-bottom: 40px;
+    }
+
+    &.active {
+      border: 2px solid $red;
+    }
+
+    img {
+      width: 24px;
+      height: auto;
+    }
+  }
+
+  div {
+    position: relative;
+
+    width: 100%;
+
+    .swatch {
+      height: 30px;
+      cursor: pointer;
+      background: $white;
+      border-radius: 1px;
+      box-shadow: 0 0 0 1px rgba(0,0,0,.1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      padding: 6px;
+
+      .color {
+        cursor: pointer;
+        width: 100%;
+        height: 100%;
+        border-radius: 2px;
+      }
+    }
+  
+    .popover {
+      position: absolute;
+      top: 35px;
+      left: 0;
+      z-index: 2;
+
+      .cover {
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+      }
+    }
+    
+  }
+}

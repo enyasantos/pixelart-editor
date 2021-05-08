@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useRef } from 'react'
+import Dimension from './components/Dimension'
+import Editor from './components/Editor'
+import Header from './components/Header'
+import './styles/global.scss'
 
-function App() {
+export default function App() {
+  const panelRef = useRef();
+
+  const [width, setWidth] = useState(24);
+  const [heigth, setHeigth] = useState(24);
+  const [startedDrawing, setStartedDrawing] = useState(false);
+  const [colorSelected, setColorSelected] = useState("#CB4335");
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header
+        startedDrawing={startedDrawing}
+        setStartedDrawing={setStartedDrawing}
+        panelRef={panelRef}
+        setWidth={setWidth}
+        setHeigth={setHeigth}
+      />
+      {!startedDrawing &&
+        <Dimension
+          width={width}
+          setWidth={setWidth}
+          heigth={heigth}
+          setHeigth={setHeigth}
+          startedDrawing={startedDrawing}
+          setStartedDrawing={setStartedDrawing}
+        />}
+      {startedDrawing &&
+        <Editor
+          width={width}
+          heigth={heigth}
+          colorSelected={colorSelected}
+          setColorSelected={setColorSelected}
+          panelRef={panelRef}
+        />
+      }
     </div>
   );
 }
-
-export default App;

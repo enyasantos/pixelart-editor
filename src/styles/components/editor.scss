@@ -1,0 +1,14 @@
+@import "../properties.scss";
+
+.editor__container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 80px calc(100% - 80px);
+  align-items: center;
+  justify-items: center;
+
+  #editor {
+    margin: 10px 0;  
+  }
+}
